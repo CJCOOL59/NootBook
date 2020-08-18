@@ -24,7 +24,7 @@ void delay(u16 i)
 
 void keyProse()
 {
-    if (k1 == 0)//°ÑnumĞ´ÈëAT24C02µÄµØÖ·1
+    if (k1 == 0)//æŠŠnumå†™å…¥AT24C02çš„åœ°å€1
     {
         delay(1000);
         if (k1 == 0)
@@ -33,7 +33,7 @@ void keyProse()
         }
         while(!k1);
     }
-    if (k2 == 0)//¶ÁÈ¡AT24C02µØÖ·1ÖĞµÄ×Ö½Úµ½numÖĞ
+    if (k2 == 0)//è¯»å–AT24C02åœ°å€1ä¸­çš„å­—èŠ‚åˆ°numä¸­
     {
         delay(1000);
         if (k2 == 0)
@@ -42,18 +42,18 @@ void keyProse()
         }
         while(!k2);
     }
-    if (k3 == 0)//¶ÔnumÀÛ¼Ó
+    if (k3 == 0)//å¯¹numç´¯åŠ 
     {
         delay(1000);
         if (k3 == 0)
         {
             num++;
-            if ( num > 255)//if²»´ø»¨À¨ºÅÖ»Ö´ĞĞºóÃæ½ô¸úµÄÒ»ÌõÓï¾ä
+            if ( num > 255)//ifä¸å¸¦èŠ±æ‹¬å·åªæ‰§è¡Œåé¢ç´§è·Ÿçš„ä¸€æ¡è¯­å¥
             num = 0;
         }
         while(!k3);
     }
-    if (k4 == 0)//numÇå0
+    if (k4 == 0)//numæ¸…0
     {
         delay(1000);
         if (k4 == 0)
@@ -64,13 +64,13 @@ void keyProse()
 
 dataPors()
 {
-    disp[0] = smgduan[num/1000];//Ç§Î»
-    disp[1] = smgduan[num%1000/100];//°ÙÎ¶
-    disp[2] = smgduan[num%1000&100/10];//Ê®Î»
-    disp[3] = smgduan[num%1000%100%10];//¸÷Î»
+    disp[0] = smgduan[num/1000];//åƒä½
+    disp[1] = smgduan[num%1000/100];//ç™¾å‘³
+    disp[2] = smgduan[num%1000&100/10];//åä½
+    disp[3] = smgduan[num%1000%100%10];//å„ä½
 }
 
-void digDisplay()//38ÒëÂëÆ÷Ê¹ÄÜ
+void digDisplay()//38è¯‘ç å™¨ä½¿èƒ½
 {
     u8 i;
     for (i = 0; i < 4; i++)
@@ -78,7 +78,7 @@ void digDisplay()//38ÒëÂëÆ÷Ê¹ÄÜ
         switch (i)
         {
         case 0:
-            LSA = 0; LSB = 0; LSC = 0;//¸÷Î»
+            LSA = 0; LSB = 0; LSC = 0;//å„ä½
             break;
         case 1:
             LSA = 1; LSB = 0; LSC = 0;
@@ -92,9 +92,9 @@ void digDisplay()//38ÒëÂëÆ÷Ê¹ÄÜ
         default:
             break;
         }
-    P0 = disp[3-i];//·¢ËÍ¶ÎÂë
-    delay(100);//É¨Ãè¼ä¸ô
-    P0 = 0x00;//ÊıÂë¹ÜÏûÒş
+    P0 = disp[3-i];//å‘é€æ®µç 
+    delay(100);//æ‰«æé—´éš”
+    P0 = 0x00;//æ•°ç ç®¡æ¶ˆéš
     }
     
 }
