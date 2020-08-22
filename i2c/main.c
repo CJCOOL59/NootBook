@@ -38,7 +38,7 @@ void keyProse()
         delay(1000);
         if (k2 == 0)
         {
-            num = ac24c02read(1);
+            num = at24c02Read(1);
         }
         while(!k2);
     }
