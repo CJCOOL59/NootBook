@@ -65,9 +65,9 @@ void keyProse()
 dataPors()
 {
     disp[0] = smgduan[num/1000];//千位
-    disp[1] = smgduan[num%1000/100];//百味
+    disp[1] = smgduan[num%1000/100];//百位
     disp[2] = smgduan[num%1000&100/10];//十位
-    disp[3] = smgduan[num%1000%100%10];//各位
+    disp[3] = smgduan[num%1000%100%10];//个位
 }
 
 void digDisplay()//38译码器使能
