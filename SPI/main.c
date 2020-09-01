@@ -20,7 +20,7 @@ sbit LSB = P2^3;
 sbit LSC = P2^4;		  //高位
 
 char num = 0;
-u8 dispData[8];
+u8 displayData[8];
 /*
 code是keil C51里面的关键字，一bai般用于定义常量数组，意思du是告诉编译zhi说把这个数组放在daoROM存储。
 code的作用是告诉单片机，定义的数据要放在ROM（程序存储区）里面，写入后就不能再更改。因为C语言中没办法详细描述存入的是ROM还是RAM（寄存器），所以在软件中添加了这一个语句起到代替汇编指令的作用，对应的还有data是存入RAM的意思。
@@ -36,15 +36,15 @@ void delay(u16 i)
 
 void dataPros()
 {
-	Ds1302ReadTime();
-	DisplayData[0] = smgduan[TIME[2]/16];				//时
-	DisplayData[1] = smgduan[TIME[2]&0x0f];				 
-	DisplayData[2] = 0x40;
-	DisplayData[3] = smgduan[TIME[1]/16];				//分
-	DisplayData[4] = smgduan[TIME[1]&0x0f];	
-	DisplayData[5] = 0x40;
-	DisplayData[6] = smgduan[TIME[0]/16];				//秒
-	DisplayData[7] = smgduan[TIME[0]&0x0f];
+	ds1302ReadTime();
+	displayData[0] = smgduan[TIME[2]/16];				//时
+	displayData[1] = smgduan[TIME[2]&0x0f];				 
+	displayData[2] = 0x40;
+	displayData[3] = smgduan[TIME[1]/16];				//分
+	displayData[4] = smgduan[TIME[1]&0x0f];	
+	displayData[5] = 0x40;
+	displayData[6] = smgduan[TIME[0]/16];				//秒
+	displayData[7] = smgduan[TIME[0]&0x0f];
 }
 
 void digDisplay()

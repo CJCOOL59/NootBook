@@ -7,9 +7,9 @@ uchar code WRITE_RTC_ADDR[7] = {0x80, 0x82, 0x84, 0x86, 0x88, 0x8a, 0x8c};
 
 //---DS1302时钟初始化2020年9月1日星期二12点00分00秒。---//
 //---存储顺序是秒分时日月周年,存储格式是用BCD码---//
-uchar TIME[7] = {0,0,0x12,0x01,0x09,0x01,0x20}; 
+uchar TIME[7] = {0x20,0x58,0x12,0x01,0x09,0x01,0x20}; 
 
-void ds1302Write(uchar addr,uchar dat)
+void ds1302Write(uchar addr, uchar dat)
 {
     uchar n;
     RST = 0;//拉低片选
@@ -24,15 +24,15 @@ void ds1302Write(uchar addr,uchar dat)
     {
         DSIO = addr & 0x01; //数据从低位开始传送，按位与
         addr >>= 1;     //addr右移1位 
-        SCKL = 1;   //上升沿,DS1302读数据
+        SCLK = 1;   //上升沿,DS1302读数据
         _nop_();
         SCLK = 0;
         _nop_();
     }
-    for ( n = 0; i < 8; n++)//写入8位数据
+    for ( n = 0; n < 8; n++)//写入8位数据
     {
         DSIO = dat & 0x01;
-        dat >> 1;
+        dat >>= 1;
         SCLK = 1;
         _nop_();
         SCLK = 0;
@@ -100,10 +100,8 @@ void ds1302Init()
 void ds1302ReadTime()
 {
     uchar n;
-    for (n = 0; i < 7; n++)//读取7个字节的时钟信号：分秒时日月周年
+    for (n = 0; n < 7; n++)//读取7个字节的时钟信号：分秒时日月周年
     {
         TIME[n] = ds1302Read(READ_RTC_ADDR[n]);
     }
-    
-
 }

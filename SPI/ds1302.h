@@ -5,7 +5,7 @@
 #include <intrins.h>
 
 //重定义关键字
-#ifdef uchar
+#ifndef uchar
 #define uchar unsigned char
 #endif
 
